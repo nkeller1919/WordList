@@ -21,21 +21,15 @@ for term in row_1:
 for term in column_last:
     words.append(str(term))
 
-for term in row_last:
-    reverse_row.append(str(term))
+i = 2
+while i<=columns:
+    words.append(str(data[rows-1,-i]))
+    i=i+1
 
-i = len(reverse_row)
-while i>=1:
-    words.append(reverse_row[i-1])
-    i=i-1
-
-for term in column_1:
-    reverse_column.append(str(term))
-
-i = len(reverse_column)
-while i>=2:
-    words.append(reverse_column[i-2])
-    i=i-1
+i = 2
+while i<rows:
+    words.append(str(data[-i,0]))
+    i=i+1
 
     
 
@@ -75,33 +69,29 @@ for term in row_1:
 #I'm almost positive I did this in the worst way possible
 
 for term in column_last:
-    temp_word[1] = term
+    temp_word[1] = term.rstrip()
     words.append(temp_word[0]+temp_word[1])
     temp_word[0] = temp_word[1]
     temp_word[1] = ''
 
-for term in row_last:
-    reverse_row.append(str(term))
     
 
-i = len(reverse_row)
-while i>=1:
-    temp_word[1] = reverse_row[i-1]
+i = 2
+while i<=columns:
+    temp_word[1] = data[rows-1,-i].rstrip()
     words.append(temp_word[0]+temp_word[1])
     temp_word[0] = temp_word[1]
     temp_word[1] = ''
-    i=i-1
+    i=i+1
 
-for term in column_1:
-    reverse_column.append(str(term))
     
-i = len(reverse_column)
-while i>=2:
-    temp_word[1] = reverse_column[i-2]
+i = 2
+while i<rows:
+    temp_word[1] = data[-i,0]
     words.append(temp_word[0]+temp_word[1])
     temp_word[0] = temp_word[1]
     temp_word[1] = ''
-    i=i-1
+    i=i+1
 temp_word[1] = first_letter
 words.append(temp_word[0]+temp_word[1])
 print(words)
